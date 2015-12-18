@@ -1,0 +1,28 @@
+{% load bootstrap3 %}
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title> {% block page_title %}Pystagram {% endblock %}</title>
+    {% bootstrap_css %}
+    {% bootstrap_javascript %}
+</head>
+
+<body>
+<div class="container">
+<p>
+<h1 class="blog_name">{pystagram}</h1>
+<a href="{% url 'posts:create_post' %}" class="btn btn-primary">새 글</a>
+<a href="{% url 'posts:list_posts' %}" class="btn btn-primary">글목록</a>
+<a href="{% url 'photos:search_photo' %}" class="btn btn-primary">사진수집</a>
+<a href="{% url 'photos:list_photos' %}" class="btn btn-primary">사진목록</a>
+</p>
+
+{% block header %} {% endblock %}
+{% block body %} {% endblock %}
+
+</div>
+</body>
+</html>

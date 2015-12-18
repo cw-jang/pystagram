@@ -1,0 +1,17 @@
+{% extends 'layout.html' %}
+{% load bootstrap3 %}
+
+{% block page_title %}사진 목록{% endblock %}
+{% block body %}
+
+<div>
+    <p><a href="{% url 'photos:delete_photos' %}">전체삭제</a></p>
+</div>
+
+<p>수집된 사진들입니다.</p>
+
+{% for photo in photos %}
+<p><img src="{{ photo }}" /></p>
+{% endfor %}
+
+{% endblock %}

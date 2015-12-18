@@ -1,0 +1,41 @@
+{% extends 'layout.html' %}
+{% load bootstrap3 %}
+
+{% block page_title %}글 수정{% endblock %}
+
+{% block body %}
+
+{% if messages %}
+{% for message in messages %}
+    <div class="alert{% if message.tags %} alert-{% if message.tags == 'error' %}danger{% else %}{{ message.tags }}{% endif %}{% endif %} alert-dismissable">
+        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&#215;</button>
+        {{ message|safe|urlize|linebreaksbr }}
+    </div>
+{% endfor %}
+{% endif %}
+
+<p>
+{{form.photo.pk}}
+</p>
+
+<form method="POST" action="" enctype="multipart/form-data">
+    {% csrf_token %}
+    
+    {% if form.photo %}
+    <p><img src="{{ form.photo.image_url }}" style="max-width:50%; height:auto;" /></p>
+    {% else %}
+    <p>사진이 없습니다.</p>
+    {% endif %}
+
+    {{ form.as_p }}
+
+    <p>
+        <input type="hidden" name="photo" value="{{form.photo.pk}}">
+    </p>
+
+    <p>
+        {% bootstrap_button "저장" button_type="submit" button_class="btn-primary" %}
+    </p>
+</form>
+
+{% endblock %}

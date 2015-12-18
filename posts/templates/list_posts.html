@@ -1,0 +1,26 @@
+{% extends 'layout.html' %}
+{% load bootstrap3 %}
+
+{% block page_title %}글 목록{% endblock %}
+{% block body %}
+
+
+{% for post in posts %}
+    <div class="post_container">
+        <h3> 
+        <a href = "{% url 'posts:view_post' post.pk %}">
+        {{post.title}}
+        </a>
+        </h3>
+        
+        <img src="{{post.thumb_url}}"/>
+        
+        {{post.content}}
+    </div>
+    
+{% empty %}
+<p> TODO: 첫 글을 쓰시겠습니까? </p>
+{% endfor %}
+
+{% bootstrap_pagination posts %}
+{% endblock %}

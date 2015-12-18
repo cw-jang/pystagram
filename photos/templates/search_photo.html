@@ -1,0 +1,33 @@
+{% extends 'layout.html' %}
+{% load bootstrap3 %}
+
+{% block page_title %}사진 목록{% endblock %}
+{% block body %}
+
+
+<p>검색 키워드를 공백없이 영문으로 입력해주세요.</p>
+
+<form method="POST" action="">
+    {% csrf_token %}
+    {{form.as_p}}
+    
+    <p>
+        <input type="submit" value="검색"/>
+    </p>
+</form>
+
+<form method="POST" action="/photos/import/">
+    {% csrf_token %}
+    <p>
+        <input type="hidden" name="imgs" value="{{imgs}}">
+        <input type="submit" value="등록"/>
+    </p>
+</form>
+
+
+{% for i in imgs %}
+<img src="{{i}}" style="max-width:50%; height:auto;"/>
+{% endfor %}
+
+
+{% endblock %}
