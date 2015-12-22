@@ -49,6 +49,9 @@ def view_post(request, pk):
 
 
 def create_post(request):
+    # if pk is not None:
+    #     post = get_object_or_404
+    #     form = PostForm(instance=post)
     if request.method == 'GET':
         form = PostForm()
         form.photo = Photo.objects.order_by('?').first()

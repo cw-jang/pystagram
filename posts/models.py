@@ -5,7 +5,7 @@ from photos.models import Photo
 
 
 class Post(models.Model):
-    user = models.ForeignKey(settings.AUTH_USER_MODEL, null=False)
+    # user = models.ForeignKey(settings.AUTH_USER_MODEL, null=False)
     title = models.CharField(max_length=200)
     content = models.TextField()
     category = models.ForeignKey('Category')
